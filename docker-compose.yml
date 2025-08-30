@@ -1,0 +1,9 @@
+services:
+  portfolio_website:
+    build: .
+    container_name: portfolio_website
+    restart: always
+    ports:
+      - "8083:80"  # hostPort:containerPort
+    networks:
+      - fashion-network

@@ -1,0 +1,82 @@
+name: portfolio_website
+
+description: A modern dark-themed Flutter portfolio website.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  go_router: ^16.2.1
+  flutter_animate: ^4.5.0
+  responsive_framework: ^1.1.1
+  lucide_icons_flutter: ^3.0.7
+  url_launcher: ^6.1.10
+  emailjs: ^1.0.0
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/profile.jpg
+    - assets/portfolio-bg.jpg
+    - assets/ecom-banner.png
+    - assets/ecom-mobile.jpg
+    - assets/ecom-web.png
+    - assets/ecom-admin.png
+    - assets/app-banner.png
+    - assets/admin-products.png
+    - assets/admin-dash.png
+    - assets/app-image.jpg
+    - assets/website.png
+    - assets/dash.png
+
+  fonts:
+    - family: Smooch Sans
+      fonts:
+        - asset: assets/fonts/SmoochSans-VariableFont_wght.ttf
+          weight: 100
+          style: normal
+        - asset: assets/fonts/SmoochSans-VariableFont_wght.ttf
+          weight: 400
+          style: normal
+        - asset: assets/fonts/SmoochSans-VariableFont_wght.ttf
+          weight: 500
+          style: normal
+        - asset: assets/fonts/SmoochSans-VariableFont_wght.ttf
+          weight: 600
+          style: normal
+        - asset: assets/fonts/SmoochSans-VariableFont_wght.ttf
+          weight: 900
+          style: normal
+
+    - family: Dosis
+      fonts:
+        - asset: assets/fonts/Dosis-VariableFont_wght.ttf
+          weight: 100
+          style: normal
+        - asset: assets/fonts/Dosis-VariableFont_wght.ttf
+          weight: 400
+          style: normal
+        - asset: assets/fonts/Dosis-VariableFont_wght.ttf
+          weight: 500
+          style: normal
+        - asset: assets/fonts/Dosis-VariableFont_wght.ttf
+          weight: 600
+          style: normal
+        - asset: assets/fonts/Dosis-VariableFont_wght.ttf
+          weight: 900
+          style: normal
+        - asset: assets/fonts/Dosis-VariableFont_wght.ttf
+          weight: 600
+          style: italic
