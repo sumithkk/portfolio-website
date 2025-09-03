@@ -106,13 +106,15 @@ class SharedLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 600;
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Column(
         children: [
           const NavBar(),
           Expanded(child: child),
-          const Footer(),
+          if (!isMobile) const Footer(),
         ],
       ),
     );
