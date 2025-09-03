@@ -1,9 +1,22 @@
+version: "3.9"
 services:
-  portfolio_website:
+  portfolio-website:
     build: .
-    container_name: portfolio_website
+    container_name: portfolio-website
     restart: always
     ports:
-      - "8083:80"  # hostPort:containerPort
+      - "8083:80"  # internal container port 80 exposed on host 8083
     networks:
       - fashion-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.sumithscloud.in`)"
+      - "traefik.http.routers.portfolio.entrypoints=websecure"
+      - "traefik.http.routers.portfolio.tls=true"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=80"  # point Traefik to container port
+    volumes:
+      - ./build/web:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+networks:
+  fashion-network:
+    external: true

@@ -10,6 +10,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isMobile = screenWidth < 600;
+    final descriptionWidth = isMobile
+        ? screenWidth * 0.9
+        : screenWidth * 1; // Adjust description width
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -17,9 +20,26 @@ class HomePage extends StatelessWidget {
         children: [
           // Background image
           Positioned.fill(
-            child: Image.asset(
-              isMobile ? 'assets/profile.jpg' : 'assets/portfolio-bg.jpg',
-              fit: BoxFit.cover,
+            child: Stack(
+              children: [
+                Image.asset(
+                  isMobile ? 'assets/profile.jpg' : 'assets/portfolio-bg.jpg',
+                  fit: BoxFit.cover, // Ensure the image covers the entire area
+                  width: MediaQuery.of(context)
+                      .size
+                      .width, // Set width to full screen width
+                  height: MediaQuery.of(context)
+                      .size
+                      .height, // Set height to full screen height
+                ),
+                if (isMobile)
+                  Positioned.fill(
+                    child: Container(
+                      color: Colors.black
+                          .withOpacity(0.5), // Black overlay with opacity
+                    ),
+                  ),
+              ],
             ),
           ),
 
@@ -29,7 +49,9 @@ class HomePage extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: descriptionWidth *
+                          0.08), // Adjust padding based on description width
                   child: isMobile
                       ? Column(
                           mainAxisAlignment: MainAxisAlignment.center,

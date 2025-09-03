@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(
@@ -39,6 +40,22 @@ class ProjectDetailsPage extends StatelessWidget {
   static const IconData orderTrackingIcon = LucideIcons.package;
   static const IconData uxPolishIcon = LucideIcons.grid2x2;
 
+  static const IconData seo = LucideIcons.search;
+  static const IconData landing = LucideIcons.bookOpenText;
+  static const IconData navigation = LucideIcons.navigation;
+  static const IconData design = LucideIcons.component;
+  static const IconData checkout = LucideIcons.badgeCheck;
+  static const IconData performance = LucideIcons.layers;
+  static const IconData analytics = LucideIcons.chartColumnStacked;
+
+  static const IconData catalog = LucideIcons.libraryBig;
+  static const IconData inventory = LucideIcons.chartCandlestick;
+  static const IconData orders = LucideIcons.shoppingBasket;
+  static const IconData promotion = LucideIcons.badgeIndianRupee;
+  static const IconData security = LucideIcons.shield;
+  static const IconData chat = LucideIcons.messageCircleMore;
+  static const IconData brain = LucideIcons.brain;
+
   const ProjectDetailsPage({super.key});
 
   @override
@@ -62,7 +79,7 @@ class ProjectDetailsPage extends StatelessWidget {
                   child: Image.asset(
                     "assets/app-image.jpg",
                     fit: isMobile
-                        ? BoxFit.fitHeight
+                        ? BoxFit.fitWidth
                         : BoxFit.cover, // Adjust the fit property as needed
                     errorBuilder: (context, _, __) => Container(
                       height: 80,
@@ -94,17 +111,42 @@ class ProjectDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 12),
             Center(
-              child: Text(
-                "An enterprise-grade e-commerce ecosystem built from the ground up designed for scalability, performance, and seamless customer experience. This project spans a Flutter mobile app, a responsive web storefront, and a feature-rich admin dashboard, all powered by a modular microservices backend.",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: isMobile ? 20 : 28, // Adjust font size for mobile
-                  color: Color.fromARGB(255, 94, 93, 93),
-                  height: 1.7,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "An enterprise-grade e-commerce ecosystem built from the ground up designed for scalability, performance, and seamless customer experience. This project spans a Flutter mobile app, a responsive web storefront, and a feature-rich admin dashboard, all powered by a modular microservices backend.\n\nTech Stack:\n",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize:
+                          isMobile ? 16 : 28, // Adjust font size for mobile
+                      color: Color.fromARGB(255, 34, 32, 32),
+                      height: 1.7,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(width: 30),
+                      SvgPicture.asset(
+                        'assets/flutter.svg', // Path to your SVG file
+                        height: isMobile ? 20 : 40,
+                      ),
+                      const SizedBox(width: 30),
+                      SvgPicture.asset(
+                        'assets/node.svg', // Path to your SVG file
+                        height: isMobile ? 20 : 40,
+                      ),
+                      const SizedBox(width: 30),
+                      SvgPicture.asset(
+                        'assets/razorpay.svg', // Path to your SVG file
+                        height: isMobile ? 20 : 40,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 36),
+            const SizedBox(height: 50),
 
             Align(
               alignment: Alignment.centerLeft,
@@ -113,7 +155,8 @@ class ProjectDetailsPage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(architectureIcon, size: 24, color: Colors.black87),
+                      const Icon(architectureIcon,
+                          size: 24, color: Colors.black87),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
@@ -133,7 +176,7 @@ class ProjectDetailsPage extends StatelessWidget {
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      Icon(customerJourneyIcon,
+                      const Icon(customerJourneyIcon,
                           size: 24, color: Colors.black87),
                       const SizedBox(width: 8),
                       Expanded(
@@ -253,35 +296,101 @@ class ProjectDetailsPage extends StatelessWidget {
                   "UX Polish: Smooth animations, skeleton loading, offline caching — making the app feel premium.",
               icon: uxPolishIcon,
             ),
-            const SizedBox(height: 36),
-
-            const _Section(
-              title: "Website — E-Com Frontend (Web)",
-              imagePath: ecomBanner,
+            const _SmallSection(
               description:
-                  "A SEO-friendly, Flutter Web-based storefront designed for desktop & mobile browsers:\n\n"
-                  "• Landing Pages: High-conversion banners, editorial sections, and promotional campaigns.\n"
-                  "• Search & Navigation: Elasticsearch-backed search, faceted filters, and fast page loads.\n"
-                  "• Responsive Design: Works flawlessly across devices with adaptive grid layouts.\n"
-                  "• Checkout Experience: Persisted cart, address autocomplete, guest checkout support.\n"
-                  "• Performance: Image optimization, code-splitting, and lazy loading for fast interactions.\n"
-                  "• Analytics: Event tracking and funnel monitoring to improve conversion rates.",
+                  "Live Chat: Real-time customer support with instant messaging capabilities.",
+              icon: chat,
+            ),
+            const _SmallSection(
+              description:
+                  "Aura AI: AI-powered recommendations and insights for a personalized shopping experience.",
+              icon: brain,
             ),
             const SizedBox(height: 36),
 
             const _Section(
-              title: "Admin — E-Com Admin Frontend",
-              imagePath: webImage,
-              description:
-                  "An internal dashboard enabling operations and business teams to manage everything:\n\n"
-                  "• Catalog Management: Create/update products, variants, collections, and upload images.\n"
-                  "• Inventory Control: Real-time stock view, purchase orders, and low-stock alerts.\n"
-                  "• Orders & Returns: Monitor order lifecycle, approve refunds, handle returns seamlessly.\n"
-                  "• Promotions & Content: Manage coupons, schedule homepage banners, and launch campaigns.\n"
-                  "• Analytics: Visual dashboards with revenue charts, top products, and sales trends.\n"
-                  "• Security: Role-based permissions so each team has just the right access.",
-            ),
+                title: "Website — E-Com Frontend (Web)",
+                imagePath: ecomBanner,
+                description:
+                    "An SEO-friendly, Flutter Web-based storefront designed for desktop & mobile browsers"),
+
             const SizedBox(height: 36),
+
+            const _SmallSection(
+              description:
+                  "Landing Pages: High-conversion banners, editorial sections, and promotional campaigns.",
+              icon: landing,
+            ),
+            const _SmallSection(
+              description:
+                  "Search & Navigation: Elasticsearch-backed search, faceted filters, and fast page loads.",
+              icon: navigation,
+            ),
+            const _SmallSection(
+              description:
+                  "Responsive Design: Works flawlessly across devices with adaptive grid layouts.",
+              icon: design,
+            ),
+            const _SmallSection(
+              description:
+                  "Checkout Experience: Persisted cart, address autocomplete, guest checkout support.",
+              icon: checkout,
+            ),
+            const _SmallSection(
+              description:
+                  "Performance: Image optimization, code-splitting, and lazy loading for fast interactions.",
+              icon: performance,
+            ),
+            const _SmallSection(
+              description:
+                  "Analytics: Event tracking and funnel monitoring to improve conversion rates.",
+              icon: analytics,
+            ),
+
+            const SizedBox(height: 36),
+
+            const _Section(
+                title: "Admin — E-Com Admin Frontend",
+                imagePath: webImage,
+                description:
+                    "An internal dashboard enabling operations and business teams to manage everything:\n\n"),
+
+            const _SmallSection(
+              description:
+                  "Catalog Management: Create/update products, variants, collections, and upload images",
+              icon: catalog,
+            ),
+            const _SmallSection(
+              description:
+                  "Inventory Control: Real-time stock view, purchase orders, and low-stock alerts.",
+              icon: inventory,
+            ),
+            const _SmallSection(
+              description:
+                  "Orders & Returns: Monitor order lifecycle, approve refunds, handle returns seamlessly.",
+              icon: orders,
+            ),
+            const _SmallSection(
+              description:
+                  "Promotions & Content: Manage coupons, schedule homepage banners, and launch campaigns.",
+              icon: promotion,
+            ),
+            const _SmallSection(
+              description:
+                  "Analytics: Visual dashboards with revenue charts, top products, and sales trends.",
+              icon: analytics,
+            ),
+            const _SmallSection(
+              description:
+                  "Security: Role-based permissions so each team has just the right access.",
+              icon: security,
+            ),
+            const _SmallSection(
+              description: "Chat Support: Live chat support for customers.",
+              icon: chat,
+            ),
+
+            const SizedBox(height: 30),
 
             // Contact Button
             Center(
@@ -380,8 +489,10 @@ class _SmallSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width <
+        600; // Check if the device is mobile
     final bodyStyle = Theme.of(context).textTheme.bodyLarge?.copyWith(
-          fontSize: 20, // Increased font size
+          fontSize: isMobile ? 16 : 20, // Increased font size
           color: Colors.black87,
           height: 1.8,
         );

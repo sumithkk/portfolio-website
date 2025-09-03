@@ -1,30 +1,29 @@
-# Use the official Dart image as a base
-FROM dart:stable AS build
+FROM ghcr.io/cirruslabs/flutter:stable AS build
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the pubspec files and resolve dependencies
-COPY pubspec.* ./
-RUN dart pub get
-
-# Copy the rest of the application code
+# Copy everything
 COPY . .
 
-# Build the application
-RUN dart pub get --offline && dart compile exe bin/server.dart -o bin/server
+# Enable web
+RUN flutter config --enable-web
 
-# Use a minimal base image for the runtime
-FROM debian:bullseye-slim
+# Get dependencies
+RUN flutter pub get
 
-# Set the working directory
-WORKDIR /app
+# Build web release
+RUN flutter build web --release
 
-# Copy the compiled server binary from the build stage
-COPY --from=build /app/bin/server /app/server
+# ---- Nginx Stage ----
+FROM nginx:alpine
 
-# Expose the port the server will run on
-EXPOSE 8085
+# Copy built files from flutter to nginx
+#COPY --from=build /app/build/web /usr/share/nginx/html
+COPY build/web /usr/share/nginx/html
 
-# Command to run the server
-CMD ["/app/server"]
+# Copy custom nginx config if needed
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

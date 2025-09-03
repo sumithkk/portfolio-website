@@ -1,6 +1,6 @@
 name: portfolio_website
 
-description: A modern dark-themed Flutter portfolio website.
+description: Sumith's portfolio website.
 version: 1.0.0+1
 publish_to: none
 
@@ -18,6 +18,7 @@ dependencies:
   url_launcher: ^6.1.10
   emailjs: ^1.0.0
   http: ^1.2.0
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +41,9 @@ flutter:
     - assets/app-image.jpg
     - assets/website.png
     - assets/dash.png
+    - assets/flutter.svg
+    - assets/razorpay.svg
+    - assets/node.svg
 
   fonts:
     - family: Smooch Sans
