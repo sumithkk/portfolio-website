@@ -7,6 +7,7 @@ import 'pages/about_page.dart';
 import 'pages/project_details_page.dart';
 import 'widgets/navbar.dart';
 import 'widgets/footer.dart';
+import 'utils/analytics.dart';
 
 void main() {
   runApp(const PortfolioWebsite());
@@ -21,63 +22,81 @@ class PortfolioWebsite extends StatelessWidget {
       routes: [
         GoRoute(
           path: '/',
-          pageBuilder: (context, state) => CustomTransitionPage(
-            child: const SharedLayout(child: HomePage()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
+          pageBuilder: (context, state) {
+            sendPageView(state.uri.toString());
+            return CustomTransitionPage(
+              child: const SharedLayout(child: HomePage()),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
+          },
         ),
         GoRoute(
           path: '/works',
-          pageBuilder: (context, state) => CustomTransitionPage(
-            child: const SharedLayout(child: WorksPage()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
+          pageBuilder: (context, state) {
+            sendPageView(state.uri.toString());
+            return CustomTransitionPage(
+              child: const SharedLayout(child: WorksPage()),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
+          },
         ),
         GoRoute(
           path: '/contact',
-          pageBuilder: (context, state) => CustomTransitionPage(
-            child: const SharedLayout(child: ContactPage()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
+          pageBuilder: (context, state) {
+            sendPageView(state.uri.toString());
+            return CustomTransitionPage(
+              child: const SharedLayout(child: ContactPage()),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
+          },
         ),
         GoRoute(
           path: '/projects',
-          pageBuilder: (context, state) => CustomTransitionPage(
-            child: const SharedLayout(child: WorksPage()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
+          pageBuilder: (context, state) {
+            sendPageView(state.uri.toString());
+            return CustomTransitionPage(
+              child: const SharedLayout(child: WorksPage()),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
+          },
         ),
         GoRoute(
           path: '/about',
-          pageBuilder: (context, state) => CustomTransitionPage(
-            child: const SharedLayout(child: AboutPage()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
+          pageBuilder: (context, state) {
+            sendPageView(state.uri.toString());
+            return CustomTransitionPage(
+              child: const SharedLayout(child: AboutPage()),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
+          },
         ),
         GoRoute(
           path: '/project-details',
-          pageBuilder: (context, state) => CustomTransitionPage(
-            child: const SharedLayout(child: ProjectDetailsPage()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
+          pageBuilder: (context, state) {
+            sendPageView(state.uri.toString());
+            return CustomTransitionPage(
+              child: const SharedLayout(child: ProjectDetailsPage()),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+            );
+          },
         ),
       ],
     );

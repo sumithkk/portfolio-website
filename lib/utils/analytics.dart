@@ -4,6 +4,7 @@ import 'dart:js' as js;
 /// [pagePath] should be the route or page name, e.g. "/about" or "/projects"
 void sendPageView(String pagePath) {
   try {
+    print("sendPageView called with path: $pagePath");
     js.context.callMethod('gtag', [
       'event',
       'page_view',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio_website/utils/analytics.dart';
+// import 'package:portfolio_website/utils/analytics.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -15,7 +15,7 @@ class NavBar extends StatelessWidget {
 
         final isMobile = MediaQuery.of(context).size.width < 600;
 
-        sendPageView(currentLocation);
+        // sendPageView(currentLocation);
 
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
